@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BangaloreProperties | Premium Real Estate Lead Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brickBlue: {
+                            50: '#f2f8fc',
+                            100: '#e1eff7',
+                            200: '#cadfef',
+                            300: '#a5cae3',
+                            400: '#79afd3',
+                            500: '#4a82a7', // Match the brick color from the image
+                            600: '#457b9d', // Anchor primary theme tone
+                            700: '#345e7b',
+                            800: '#2d4f68',
+                            900: '#294357',
+                            950: '#1a2a38',
+                        },
+                        amberAccent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <a href="#" class="flex items-center gap-2.5">
+                        <div class="bg-brickBlue-600 text-white p-2.5 rounded-xl shadow-md shadow-brickBlue-200">
+                            <i class="bi bi-buildings-fill text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-extrabold tracking-tight text-brickBlue-950 block leading-tight">BangaloreProperties</span>
+                            <span class="text-xs text-brickBlue-600 font-semibold tracking-wider uppercase block">Premium Real Estate</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#properties-section" id="nav-properties" class="text-slate-600 hover:text-brickBlue-600 font-semibold text-sm transition transition-all duration-200">Explore Properties</a>
+                    <a href="#recommendations-section" class="text-slate-600 hover:text-brickBlue-600 font-semibold text-sm transition transition-all duration-200">AI Matches</a>
+                    <a href="#compare-section" class="text-slate-600 hover:text-brickBlue-600 font-semibold text-sm transition transition-all duration-200 flex items-center gap-1">
+                        Compare <span id="compare-badge" class="bg-brickBlue-500 text-white text-[10px] px-1.5 py-0.5 rounded-full hidden">0</span>
+                    </a>
+                    <a href="#emi-calculator" class="text-slate-600 hover:text-brickBlue-600 font-semibold text-sm transition transition-all duration-200">EMI Planner</a>
+                    <a href="#blog-section" class="text-slate-600 hover:text-brickBlue-600 font-semibold text-sm transition transition-all duration-200">Insights</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:+919876543210" class="hidden lg:flex items-center gap-2 text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all font-semibold text-sm px-4 py-2.5 rounded-xl">
+                        <i class="bi bi-telephone-fill text-brickBlue-600 animate-pulse"></i> Let's Talk!
+                    </a>
+                    <button onclick="openEnquiryForm('General Callback Request', 'General')" class="bg-brickBlue-600 hover:bg-brickBlue-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl flex items-center gap-2 shadow-lg shadow-brickBlue-600/20 active:scale-95 transition-all duration-150">
+                        <i class="bi bi-chat-right-text-fill"></i> Request Callback
+                    </button>
+                    <!-- Mobile Hamburger -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-700 p-2 border border-slate-200 rounded-xl hover:bg-slate-50">
+                        <i class="bi bi-list text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100 bg-white shadow-lg absolute w-full left-0 transition-all duration-300">
+            <div class="px-4 pt-4 pb-6 space-y-3">
+                <a href="#properties-section" onclick="toggleMobileMenu()" class="block font-semibold px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"><i class="bi bi-search mr-2"></i> Find Properties</a>
+                <a href="#recommendations-section" onclick="toggleMobileMenu()" class="block font-semibold px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"><i class="bi bi-cpu mr-2"></i> AI Recommendations</a>
+                <a href="#compare-section" onclick="toggleMobileMenu()" class="block font-semibold px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"><i class="bi bi-arrow-left-right mr-2"></i> Compare Properties</a>
+                <a href="#emi-calculator" onclick="toggleMobileMenu()" class="block font-semibold px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"><i class="bi bi-calculator mr-2"></i> Home Loan EMI Portal</a>
+                <a href="#blog-section" onclick="toggleMobileMenu()" class="block font-semibold px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"><i class="bi bi-journals mr-2"></i> Blogs & Insights</a>
+                <div class="h-[1px] bg-slate-100 my-2"></div>
+                <div class="grid grid-cols-2 gap-2 pt-2">
+                    <a href="tel:+919876543210" class="flex items-center justify-center gap-2 border border-slate-200 py-3 rounded-xl font-semibold text-slate-800 bg-slate-50"><i class="bi bi-telephone"></i> Call Us</a>
+                    <a href="https://wa.me/919876543210?text=Hello,%20I'm%20interested%20in%20properties%20in%20Bangalore." target="_blank" class="flex items-center justify-center gap-2 border border-green-200 py-3 rounded-xl font-semibold text-green-700 bg-green-50"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Live Notification Widget for Social Proof -->
+    <div id="liveProofWidget" class="fixed bottom-6 left-6 z-40 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 transition-all duration-500 translate-y-32 opacity-0 max-w-sm">
+        <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brickBlue-100 text-brickBlue-700 font-extrabold text-sm shadow-inner">
+            <span class="absolute top-0 right-0 flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+            <i class="bi bi-shield-check text-lg"></i>
+        </div>
+        <div>
+            <p class="text-xs font-semibold text-slate-500">Verified Activity</p>
+            <p id="liveProofText" class="text-xs font-bold text-slate-800 leading-tight">Someone from Whitefield just booked a site visit!</p>
+        </div>
+        <button onclick="dismissLiveProof()" class="text-slate-400 hover:text-slate-600 p-1"><i class="bi bi-x"></i></button>
+    </div>
+
+    <!-- MAIN HERO & ADVANCED SEARCH SECTION -->
+    <section class="relative bg-gradient-to-b from-brickBlue-950 via-brickBlue-900 to-slate-900 py-16 lg:py-24 px-4 sm:px-6 lg:px-8 text-white overflow-hidden">
+        <!-- Abstract Brick Graphic Overlays in Background representing the painted bricks image aesthetic -->
+        <div class="absolute inset-0 opacity-15 overflow-hidden">
+            <div class="absolute top-10 left-10 w-96 h-96 bg-brickBlue-400 rounded-lg transform -rotate-12 border-8 border-brickBlue-200 blur-sm"></div>
+            <div class="absolute bottom-10 right-20 w-80 h-80 bg-brickBlue-300 rounded-lg transform rotate-45 border-4 border-brickBlue-500"></div>
+            <div class="absolute top-1/2 left-1/3 w-[500px] h-32 bg-brickBlue-600 rounded-xl transform -skew-x-12"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 z-10">
+            <!-- Hero Copy -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brickBlue-500/20 border border-brickBlue-400/30 text-brickBlue-300 text-xs font-bold uppercase tracking-wider mb-6">
+                    <i class="bi bi-star-fill text-amberAccent-500 animate-pulse"></i> 100% Verified Bangalore Properties Only
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                    Invest in the Tech Capital's <span class="bg-gradient-to-r from-cyan-400 to-amberAccent-500 bg-clip-text text-transparent">Finest Homes</span>
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Exclusive collections of luxury villas, modern apartments, and premium villa plots across Bangalore's major tech-corridors and high-growth areas. Find properties built by Grade-A developers with active RERA compliance.
+                </p>
+                <!-- Quick Metric Board -->
+                <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 pt-4 border-t border-slate-700/50">
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold text-white">450+</span>
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Curated Listings</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold text-white">12k+</span>
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Customers Advised</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold text-white">100%</span>
+                        <span class="text-xs text-slate-400 font-semibold uppercase">RERA Assured</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Interactive Search Widget (Right Column) -->
+            <div class="w-full lg:w-1/2">
+                <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="bi bi-funnel text-brickBlue-600"></i> Find Your Ideal Home
+                    </h3>
+                    <p class="text-slate-500 text-xs font-semibold mb-6">Search in real-time with instant matching results.</p>
+                    
+                    <div class="space-y-4">
+                        <!-- Location Input -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Primary Neighborhood</label>
+                            <div class="relative">
+                                <i class="bi bi-geo-alt-fill absolute left-4 top-[14px] text-brickBlue-600"></i>
+                                <select id="search-location" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all appearance-none cursor-pointer">
+                                    <option value="All">All Over Bengaluru</option>
+                                    <option value="Whitefield">Whitefield (IT Corridor)</option>
+                                    <option value="Indiranagar">Indiranagar (Premium residential)</option>
+                                    <option value="Electronic City">Electronic City (Electronics Hub)</option>
+                                    <option value="Sarjapur Road">Sarjapur Road / Outer Ring Rd</option>
+                                    <option value="Hebbal">Hebbal (North Bangalore)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Property Type -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Category</label>
+                                <div class="relative">
+                                    <i class="bi bi-house-door-fill absolute left-4 top-[14px] text-brickBlue-600"></i>
+                                    <select id="search-type" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all pointer-events-auto">
+                                        <option value="All">All Categories</option>
+                                        <option value="Luxury Villas">Luxury Villas</option>
+                                        <option value="Apartments">Apartments & Flats</option>
+                                        <option value="Residential Plots">Plots / Land</option>
+                                        <option value="Commercial">Commercial Assets</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- BHK Selection -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Configuration (BHK)</label>
+                                <div class="relative">
+                                    <i class="bi bi-grid-fill absolute left-4 top-[14px] text-brickBlue-600"></i>
+                                    <select id="search-bhk" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                                        <option value="All">Any Config</option>
+                                        <option value="1">1 BHK</option>
+                                        <option value="2">2 BHK</option>
+                                        <option value="3">3 BHK</option>
+                                        <option value="4+">4+ BHK</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Budget Selection -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Max Pricing Cap</label>
+                                <div class="relative">
+                                    <i class="bi bi-currency-rupee absolute left-4 top-[14px] text-brickBlue-600"></i>
+                                    <select id="search-budget" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                                        <option value="All">Unlimited Budget</option>
+                                        <option value="60L">Under ₹60 Lakhs</option>
+                                        <option value="1.2Cr">Under ₹1.2 Crores</option>
+                                        <option value="2.5Cr">Under ₹2.5 Crores</option>
+                                        <option value="5Cr">Under ₹5.0 Crores</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Possession Status -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Possession Status</label>
+                                <div class="relative">
+                                    <i class="bi bi-clock-history absolute left-4 top-[14px] text-brickBlue-600"></i>
+                                    <select id="search-possession" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                                        <option value="All">All Timelines</option>
+                                        <option value="Ready-to-Move">Ready-to-Move</option>
+                                        <option value="New Launch">New Launch Projects</option>
+                                        <option value="Under Construction">Under Construction</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="triggerSearch()" class="w-full bg-brickBlue-600 hover:bg-brickBlue-700 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-brickBlue-600/30 font-bold tracking-wide active:scale-95 transition-all duration-150 mt-6 md:text-md">
+                            <i class="bi bi-search text-base"></i> Search Best Matches & Deals
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING PROPERTIES BAR FOR EASY CLICKS -->
+    <div class="bg-brickBlue-50 border-y border-brickBlue-100 py-4 font-semibold px-4 tracking-tight shadow-inner">
+        <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4 text-xs sm:text-sm text-slate-600">
+            <span class="font-bold uppercase text-[11px] text-slate-400 tracking-wider">Quick Filters:</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="quickFilter('All')" class="px-4 py-2 rounded-full border border-slate-200 hover:border-brickBlue-600 hover:text-brickBlue-700 hover:bg-white active-quick bg-white text-brickBlue-600 border-brickBlue-500 font-bold shadow-sm transition-all shadow-brickBlue-200/50">All Units</button>
+                <button onclick="quickFilter('Apartments')" class="px-4 py-2 rounded-full border border-slate-200 hover:border-brickBlue-600 hover:text-brickBlue-700 hover:bg-white transition-all">Apartments</button>
+                <button onclick="quickFilter('Luxury Villas')" class="px-4 py-2 rounded-full border border-slate-200 hover:border-brickBlue-600 hover:text-brickBlue-700 hover:bg-white transition-all">Villas</button>
+                <button onclick="quickFilter('Residential Plots')" class="px-4 py-2 rounded-full border border-slate-200 hover:border-brickBlue-600 hover:text-brickBlue-700 hover:bg-white transition-all">Villa Plots</button>
+                <button onclick="quickFilter('Ready-to-Move')" class="px-4 py-2 rounded-full border border-slate-200 hover:border-brickBlue-600 hover:text-brickBlue-700 hover:bg-white transition-all">Ready Units</button>
+            </div>
+            <a href="#emi-calculator" class="text-brickBlue-600 font-bold hover:underline flex items-center gap-1"><i class="bi bi-calculator"></i> Custom EMI Calculator</a>
+        </div>
+    </div>
+
+    <!-- AI RECOMMENDATION MATCHMAKER ENGINE -->
+    <section id="recommendations-section" class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-tr from-slate-900 to-brickBlue-950 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden shadow-2xl">
+                <!-- Graphical Backdrop element -->
+                <div class="absolute -right-12 -top-12 opacity-10 text-white select-none pointer-events-none">
+                    <i class="bi bi-cpu-fill text-[200px]"></i>
+                </div>
+
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-flex items-center gap-1 bg-amber-500/10 border border-amber-500/30 text-amberAccent-500 text-xs uppercase font-extrabold px-3 py-1.5 rounded-full mb-4">
+                        <i class="bi bi-stars"></i> Intelligent Discovery Engine
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 text-white">Smart Match Property Advisor</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mb-8">
+                        Provide your primary priority and let our AI algorithm match top developers properties with the highest ROI potentials, legal verifications, and lifestyle suitability indexing.
+                    </p>
+
+                    <!-- Interactive Micro-Wizard -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-2 bg-white/5 border border-white/10 rounded-2xl mb-8">
+                        <div class="p-3">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-1">My Goal is</label>
+                            <select id="ai-goal" class="w-full bg-slate-800 text-white rounded-lg px-2 py-2 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-brickBlue-400 border border-transparent">
+                                <option value="self-use">End-use (Living in)</option>
+                                <option value="investment">High Capital Gain (Investment)</option>
+                                <option value="rental">Steady Passive Rental Income</option>
+                            </select>
+                        </div>
+                        <div class="p-3">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Preferred Amenity</label>
+                            <select id="ai-amenity" class="w-full bg-slate-800 text-white rounded-lg px-2 py-2 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-brickBlue-400 border border-transparent">
+                                <option value="swimming-pool">Swimming Pool & Club</option>
+                                <option value="gated-security">Maximum High Security</option>
+                                <option value="connectivity">Metro Proximity (Workplace)</option>
+                                <option value="greenery">Green Space & Gardens</option>
+                            </select>
+                        </div>
+                        <div class="p-3">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Timeline Option</label>
+                            <select id="ai-timeline" class="w-full bg-slate-800 text-white rounded-lg px-2 py-2 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-brickBlue-400 border border-transparent">
+                                <option value="3-months">Immediate Moves</option>
+                                <option value="1-year">Within Next 12 Months</option>
+                                <option value="new-launch">Early Entry (New Launch)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end justify-center p-3">
+                            <button onclick="generateAIMatches()" class="w-full bg-brickBlue-500 hover:bg-brickBlue-600 text-white font-extrabold text-xs py-3 rounded-xl transition duration-200 uppercase tracking-widest shadow-md">
+                                Generate Matches
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- AI Outputs Slot -->
+                    <div id="aiMatchOutputs" class="hidden transition-all duration-300">
+                        <p class="text-sm font-bold text-slate-150 mb-4 flex items-center gap-2"><i class="bi bi-magic text-yellow-400"></i> Top recommended Matches for your profile:</p>
+                        <div id="ai-properties-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Dynamic Cards go in here via Javascript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE DYNAMIC PROPERTIES LISTING SECTION -->
+    <section id="properties-section" class="py-16 bg-slate-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-xs font-semibold block mb-2">Exclusive Inventory Catalog</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Featured Projects & Handpicked Properties</h2>
+                    <p class="text-slate-500 text-sm mt-1">Direct tie-ups with premium developers. Zero brokerage on new launches!</p>
+                </div>
+                <div class="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-xl border border-slate-100 shadow-sm">
+                    <span class="text-xs font-semibold text-slate-500">View Grid Count:</span>
+                    <span id="properties-count-badge" class="bg-brickBlue-600 text-white text-xs font-extrabold px-3 py-1 rounded-lg">12 Units</span>
+                </div>
+            </div>
+
+            <!-- Main properties grid container -->
+            <div id="realestate-grid animate-fade-in" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Standard dynamic properties inserted programmatically with mock data -->
+            </div>
+
+            <!-- Grid empty state view dynamic -->
+            <div id="grid-empty-state" class="hidden text-center py-24 bg-white rounded-3xl border border-dashed border-slate-200 mt-8">
+                <i class="bi bi-exclamation-square-fill text-slate-300 text-5xl mb-4 block"></i>
+                <h4 class="text-xl font-bold text-slate-700">No properties fit those specifications</h4>
+                <p class="text-slate-500 text-sm mt-1 max-w-sm mx-auto">Try widening your filters or location boundaries to find active premium listings nearby.</p>
+                <button onclick="resetFilters()" class="mt-6 bg-brickBlue-600 hover:bg-brickBlue-700 text-white text-xs font-bold py-2.5 px-6 rounded-xl">Clear Search Criteria</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROPERTY COMPARISON BAR & EXPERT ANALYTICS CONTAINER -->
+    <section id="compare-section" class="py-16 bg-white border-t border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-xs block mb-2">Intelligent Decisions</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Property Comparison Center</h2>
+                <p class="text-slate-500 text-sm mt-1">Select and compare specs side-by-side up to 3 listings concurrently to make structural spatial analysis easier with no guesswork.</p>
+            </div>
+
+            <!-- Compare Tray Display Box -->
+            <div class="bg-slate-50 border border-slate-250 rounded-3xl p-6 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="comparison-tray">
+                    <!-- Standard Slots empty view initially -->
+                    <div class="bg-slate-100/60 border border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center py-10 px-4 text-center">
+                        <i class="bi bi-plus-circle text-slate-400 text-3xl mb-2"></i>
+                        <span class="text-xs font-semibold text-slate-500 text-center">Select first property in listings above to compare details</span>
+                    </div>
+                    <div class="bg-slate-100/60 border border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center py-10 px-4 text-center">
+                        <i class="bi bi-plus-circle text-slate-400 text-3xl mb-2"></i>
+                        <span class="text-xs font-semibold text-slate-500 text-center">Add second option</span>
+                    </div>
+                    <div class="bg-slate-100/60 border border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center py-10 px-4 text-center">
+                        <i class="bi bi-plus-circle text-slate-400 text-3xl mb-2"></i>
+                        <span class="text-xs font-semibold text-slate-500 text-center">Add third option</span>
+                    </div>
+                </div>
+
+                <!-- Compare Panel Button Frame -->
+                <div class="mt-8 flex justify-center hidden" id="compare-actions">
+                    <button onclick="processVisualComparison()" class="bg-brickBlue-600 hover:bg-brickBlue-700 text-white font-extrabold px-8 py-3 rounded-2xl flex items-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all">
+                        <i class="bi bi-arrow-left-right text-sm"></i> Launch Matrix Comparison
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE EMI CALCULATOR WITH RADIAL VISUALIZATION -->
+    <section id="emi-calculator" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    
+                    <!-- Calculator Inputs Left Block -->
+                    <div class="lg:col-span-7 p-8 lg:p-12">
+                        <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-[11px] block mb-2">Calculators & Planners</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Home Loan EMI Assessor</h2>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">
+                            Simulate customizable interest brackets dynamically to optimize home purchase budgets. Check estimated EMIs based on prevailing standard home loan guidelines in Bangalore.
+                        </p>
+
+                        <div class="space-y-6">
+                            <!-- Amount Slider -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Principal Loan Amount</span>
+                                    <span id="loan-amt-label" class="text-sm font-extrabold text-brickBlue-700">₹80 Lakhs</span>
+                                </div>
+                                <input type="range" id="loanRange" min="1000000" max="60000000" step="100000" value="8000000" class="w-full accent-brickBlue-600 cursor-pointer" oninput="calculateEMI()">
+                                <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                    <span>₹10 Lakhs</span>
+                                    <span>₹6 Crores</span>
+                                </div>
+                            </div>
+
+                            <!-- Interest Rate -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Rate of Interest (Annual %)</span>
+                                    <span id="loan-rate-label" class="text-sm font-extrabold text-brickBlue-700">8.45%</span>
+                                </div>
+                                <input type="range" id="rateRange" min="5" max="15" step="0.05" value="8.45" class="w-full accent-brickBlue-600 cursor-pointer" oninput="calculateEMI()">
+                                <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                    <span>5% APR (Low)</span>
+                                    <span>15% APR (High)</span>
+                                </div>
+                            </div>
+
+                            <!-- Duration Years -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Repayment Loan Period</span>
+                                    <span id="loan-term-label" class="text-sm font-extrabold text-brickBlue-700">20 Years</span>
+                                </div>
+                                <input type="range" id="termRange" min="1" max="30" step="1" value="20" class="w-full accent-brickBlue-600 cursor-pointer" oninput="calculateEMI()">
+                                <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                    <span>1 Year</span>
+                                    <span>30 Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Panel Right Design Block matching custom brick colors -->
+                    <div class="lg:col-span-5 bg-brickBlue-950 text-white p-8 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Abstract overlay matching design style -->
+                        <div class="absolute bottom-0 right-0 w-48 h-48 bg-brickBlue-800/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <span class="text-xs font-extrabold text-emerald-400 uppercase tracking-widest block mb-1"><i class="bi bi-wallet2"></i> Monthly Forecast</span>
+                            <h4 class="text-slate-400 text-sm font-semibold">Your Estimated EMI Installment</h4>
+                            <div class="mt-4 mb-8">
+                                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white block" id="calculated-emi">₹69,219</span>
+                                <span class="text-xs text-slate-400 block mt-1">Approximate calculation for evaluation planning parameters</span>
+                            </div>
+
+                            <div class="space-y-4 border-t border-slate-800 pt-6">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-slate-400 font-semibold flex items-center gap-2"><span class="h-2.5 w-2.5 bg-brickBlue-600 rounded-full inline-block"></span> Total Principal amount:</span>
+                                    <span class="font-extrabold text-slate-100" id="emi-out-principal">₹80,00,000</span>
+                                </div>
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-slate-400 font-semibold flex items-center gap-2"><span class="h-2.5 w-2.5 bg-amberAccent-500 rounded-full inline-block"></span> Total Estimated Interest:</span>
+                                    <span class="font-extrabold text-slate-100" id="emi-out-interest">₹86,12,560</span>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold border-t border-slate-800/50 pt-3">
+                                    <span class="text-slate-300">Total Payable Amount:</span>
+                                    <span class="text-emerald-400" id="emi-out-total">₹1,66,12,560</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-8">
+                            <button onclick="openEnquiryForm('Home Loan Eligibility Inquiry', 'Home Loan Support')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-emerald-500/20">
+                                Apply For Prefiltered Home Loans <i class="bi bi-arrow-right-short"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP INTEGRATION SIMULATED CONTAINER SECTION -->
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-xs block">Premium Locations</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Elite Real Estate Hotspots</h2>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Bangalore's growth corridors offer massive ROI yields due to rapid tech park development and the outer-ring road & metro infrastructure expansions. Check our active project proximity metrics.
+                    </p>
+
+                    <!-- Interactive checklist matching real locations -->
+                    <div class="space-y-3 font-semibold text-sm">
+                        <div class="flex items-center gap-3 text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brickBlue-500 cursor-pointer transition-all" onclick="focusGeoZone('Whitefield')">
+                            <div class="bg-brickBlue-100 text-brickBlue-700 h-8 w-8 rounded-lg flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <p class="font-bold">Whitefield IT Corridor</p>
+                                <p class="text-xs text-slate-400">Hub of MNC complexes & premium high-rises.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brickBlue-500 cursor-pointer transition-all" onclick="focusGeoZone('Electronic City')">
+                            <div class="bg-brickBlue-100 text-brickBlue-700 h-8 w-8 rounded-lg flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <p class="font-bold">Electronic City Phase 1 & 2</p>
+                                <p class="text-xs text-slate-400">High rental index catering to IT experts.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brickBlue-500 cursor-pointer transition-all" onclick="focusGeoZone('Hebbal')">
+                            <div class="bg-brickBlue-100 text-brickBlue-700 h-8 w-8 rounded-lg flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <p class="font-bold">Hebbal & North Gateway</p>
+                                <p class="text-xs text-slate-400">Superb connectivity pathways to KIA Airport.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulated Map Element (Interactive visualization placeholder matching requested design) -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-100 border border-slate-200 rounded-3xl overflow-hidden p-3 relative h-[380px] sm:h-[450px] shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80'); opacity: 0.15; filter: grayscale(1); pointer-events: none;"></div>
+                        
+                        <!-- Map Layer Simulation -->
+                        <div class="relative w-full h-full bg-slate-200/90 rounded-2xl p-4 flex flex-col justify-between overflow-hidden border border-slate-300">
+                            <!-- Graphical Grid background for simulation feel -->
+                            <div class="absolute inset-0 grid grid-cols-6 grid-rows-6 opacity-30 pointer-events-none">
+                                <div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div><div class="border border-slate-300"></div>
+                            </div>
+                            
+                            <!-- Static Overlay Badge -->
+                            <div class="relative z-10 bg-white/90 backdrop-blur-sm shadow-sm py-2 px-3.5 rounded-full border border-slate-200 self-start text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span> Live Bangalore Map Simulation
+                            </div>
+
+                            <!-- Interactive mock markers that trigger property filters -->
+                            <div class="absolute top-[40%] left-[25%] cursor-pointer group" onclick="quickFilter('Whitefield')">
+                                <div class="bg-brickBlue-600 hover:bg-amberAccent-500 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-xl shadow-lg border border-white transition-all transform hover:scale-110 flex items-center gap-1">
+                                    <i class="bi bi-geo-alt-fill text-yellow-300 animate-bounce"></i> Whitefield (Active Deals)
+                                </div>
+                            </div>
+
+                            <div class="absolute top-[65%] left-[55%] cursor-pointer group" onclick="quickFilter('Electronic City')">
+                                <div class="bg-brickBlue-600 hover:bg-amberAccent-500 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-xl shadow-lg border border-white transition-all transform hover:scale-110 flex items-center gap-1">
+                                    <i class="bi bi-geo-alt-fill text-yellow-300 animate-bounce"></i> Elec. City (100% Verified)
+                                </div>
+                            </div>
+
+                            <div class="absolute top-[20%] left-[60%] cursor-pointer group" onclick="quickFilter('Hebbal')">
+                                <div class="bg-brickBlue-600 hover:bg-amberAccent-500 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-xl shadow-lg border border-white transition-all transform hover:scale-110 flex items-center gap-1">
+                                    <i class="bi bi-geo-alt-fill text-yellow-300 animate-bounce"></i> Hebbal Luxury
+                                </div>
+                            </div>
+
+                            <!-- Footer widget details -->
+                            <div class="relative z-10 bg-white/95 backdrop-blur-sm self-stretch rounded-xl p-3 shadow-md border border-slate-100 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-extrabold text-slate-800">Map Filter Navigation</p>
+                                    <p class="text-[11px] text-slate-500 font-semibold">Click marked map spots to filter listings instantly.</p>
+                                </div>
+                                <button onclick="resetFilters()" class="text-[10px] text-brickBlue-600 font-extrabold uppercase hover:underline">Show All Regions</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & SUCCESS STORIES CONTAINER -->
+    <section class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-xs block mb-2">Verified Success Stories</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2">What Homebuyers Say About Us</h2>
+                <p class="text-slate-500 text-sm">Empowering families to find high quality, RERA compliant investments seamlessly.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6 leading-relaxed">
+                            "Found a beautiful premium 3 BHK apartment in Whitefield through BangaloreProperties. The EMI calculator was extremely accurate and their direct coordinator booked site visits immediately. Exceptional experience!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="h-10 w-10 rounded-full bg-slate-300 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Buyer" class="object-cover h-full w-full">
+                        </div>
+                        <div>
+                            <p class="text-sm font-extrabold text-slate-900 leading-none">Ananth Narayan</p>
+                            <p class="text-[11px] text-slate-400 font-bold leading-tight mt-1">SDE-3, Amazon Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6 leading-relaxed">
+                            "The compare tool made listing comparisons so clear. We successfully short-listed 2 residential plots in North Gate and purchased our dream space without agent markup. Clean and transparent service."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="h-10 w-10 rounded-full bg-slate-300 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Buyer" class="object-cover h-full w-full">
+                        </div>
+                        <div>
+                            <p class="text-sm font-extrabold text-slate-900 leading-none">Ritu Sharma</p>
+                            <p class="text-[11px] text-slate-400 font-bold leading-tight mt-1">VP Products, Goldman Sachs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6 leading-relaxed">
+                            "The WhatsApp integration makes coordination incredible. I booked an early Sunday morning site visit via their calendar tool for Prestige Lakeside Villa, and transport was organized by them. Five stars!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="h-10 w-10 rounded-full bg-slate-300 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Buyer" class="object-cover h-full w-full">
+                        </div>
+                        <div>
+                            <p class="text-sm font-extrabold text-slate-900 leading-none">Priya Deshmukh</p>
+                            <p class="text-[11px] text-slate-400 font-bold leading-tight mt-1">Founder, InnoSpace Designs</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERT BLOG & ADVICE ARTICLES SECTION -->
+    <section id="blog-section" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-brickBlue-600 font-extrabold uppercase tracking-widest text-xs block mb-2">Blogs & Insights</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Bengaluru Property Market Knowledge Hub</h2>
+                </div>
+                <p class="text-slate-500 text-sm md:max-w-xs mt-3 md:mt-0 font-semibold">Get daily insights and legal strategies curated by local real estate experts.</p>
+            </div>
+
+            <!-- Blog Grid Content matching guidelines -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Box 1 -->
+                <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-brickBlue-300 hover:shadow-xl transition-all duration-300">
+                    <div class="h-[200px] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=500&q=80" alt="Apartment interior" class="object-cover h-full w-full group-hover:scale-105 transition-all duration-300">
+                        <span class="absolute bottom-3 left-3 bg-brickBlue-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md">First-Time Buyers</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-2"><i class="bi bi-calendar3"></i> updated 2 days ago</span>
+                        <h4 class="text-lg font-extrabold text-slate-950 mb-3 group-hover:text-brickBlue-600 transition-colors">A Comprehensive Guide to RERA Karnataka</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                            Learn how to verify developers, registration status, track execution timelines, and avoid transaction discrepancies with regional compliance legal tips.
+                        </p>
+                        <a href="#emi-calculator" class="text-xs font-bold text-slate-900 group-hover:text-brickBlue-600 transition-colors flex items-center gap-1">Read Assessment <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Box 2 -->
+                <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-brickBlue-300 hover:shadow-xl transition-all duration-300">
+                    <div class="h-[200px] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Planning office with calculator" class="object-cover h-full w-full group-hover:scale-105 transition-all duration-300">
+                        <span class="absolute bottom-3 left-3 bg-brickBlue-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md">Home Loan Planning</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-2"><i class="bi bi-calendar3"></i> Updated 4 Days Ago</span>
+                        <h4 class="text-lg font-extrabold text-slate-950 mb-3 group-hover:text-brickBlue-600 transition-colors">Keep Your Home Loan EMI Under 40% of Income</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                            Detailed structural finance strategies to divide standard portfolios preventing high interest rates or tenure blockages on luxury property buys.
+                        </p>
+                        <a href="#emi-calculator" class="text-xs font-bold text-slate-900 group-hover:text-brickBlue-600 transition-colors flex items-center gap-1">Read Assessment <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Box 3 -->
+                <article class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-brickBlue-300 hover:shadow-xl transition-all duration-300">
+                    <div class="h-[200px] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=500&q=80" alt="Bangalore real estate towers" class="object-cover h-full w-full group-hover:scale-105 transition-all duration-300">
+                        <span class="absolute bottom-3 left-3 bg-brickBlue-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md">Investment Strategies</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-2"><i class="bi bi-calendar3"></i> Updated 1 Week Ago</span>
+                        <h4 class="text-lg font-extrabold text-slate-950 mb-3 group-hover:text-brickBlue-600 transition-colors">Top 3 High-Yield Zones in Bangalore (2024 Edition)</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                            Unveiling premium high potential clusters with projected compound annual growth rates stemming from infrastructural outer metro integration.
+                        </p>
+                        <a href="#emi-calculator" class="text-xs font-bold text-slate-900 group-hover:text-brickBlue-600 transition-colors flex items-center gap-1">Read Assessment <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION & NEWSLETTER SIGNUP -->
+    <footer class="bg-brickBlue-950 text-white border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Grid columns -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Branding column -->
+                <div class="md:col-span-1 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-brickBlue-500 text-white p-2.5 rounded-xl">
+                            <i class="bi bi-buildings-fill text-lg"></i>
+                        </div>
+                        <span class="text-lg font-extrabold tracking-tight text-white">BangaloreProperties</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Bengaluru's foremost customer centric real estate search interface. Providing uncompromised transparency, verified home layouts, and absolute developer validation.
+                    </p>
+                    <div class="flex items-center gap-2 pt-2">
+                        <a href="#" class="h-8 w-8 bg-slate-800 hover:bg-brickBlue-600 rounded-lg flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="h-8 w-8 bg-slate-800 hover:bg-brickBlue-600 rounded-lg flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="h-8 w-8 bg-slate-800 hover:bg-brickBlue-600 rounded-lg flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="h-8 w-8 bg-slate-800 hover:bg-brickBlue-600 rounded-lg flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fast Menu links -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-extrabold tracking-wide uppercase text-slate-200">Core Neighborhoods</h5>
+                    <ul class="space-y-2 text-xs font-semibold text-slate-400">
+                        <li><a href="#" onclick="quickFilter('Whitefield')" class="hover:text-white transition-colors">Properties in Whitefield</a></li>
+                        <li><a href="#" onclick="quickFilter('Electronic City')" class="hover:text-white transition-colors">Apartments in Electronic City</a></li>
+                        <li><a href="#" onclick="quickFilter('Hebbal')" class="hover:text-white transition-colors">Villas near Hebbal Airport Gate</a></li>
+                        <li><a href="#" onclick="quickFilter('All')" class="hover:text-white transition-colors">Premium plots in Sarjapur Rd</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Support Info -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-extrabold tracking-wide uppercase text-slate-200">Direct Contact Help</h5>
+                    <ul class="space-y-3 text-xs font-semibold text-slate-400">
+                        <li class="flex items-start gap-2">
+                            <i class="bi bi-geo-alt-fill text-brickBlue-400"></i>
+                            <span>Level 5, Brigade Towers, MG Road, Ashok Nagar, Bengaluru, KA 560001</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="bi bi-envelope-fill text-brickBlue-400"></i>
+                            <a href="mailto:support@bangaloreproperties.com" class="hover:text-white transition-colors">support@bangaloreproperties.com</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="bi bi-telephone-fill text-brickBlue-400"></i>
+                            <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Lead Capturing Newsletter Form -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-extrabold tracking-wide uppercase text-slate-200">Market Insights Newsletter</h5>
+                    <p class="text-xs text-slate-400">Join 8,000+ subscriber lists to receive instant hot listing alerts and project discounts first.</p>
+                    <div class="space-y-2">
+                        <input type="email" id="newsletter-email" placeholder="Enter your best email" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-brickBlue-500">
+                        <button onclick="subscribeNewsletter()" class="w-full bg-brickBlue-600 hover:bg-brickBlue-700 text-white text-xs font-bold py-2.5 rounded-xl transition duration-200">Subscribe for Alerts</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Disclaimer legal boundaries as requested -->
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2024 BangaloreProperties Premium Network. Crafted to absolute high fidelity layouts.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms & Legal Disclaimers</a>
+                    <a href="#" class="hover:underline">Disclaimer RERA Disclaimer Rules</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE LEAD CAPTURE ENQUIRY POPUP MODAL -->
+    <div id="enquiryModal" class="fixed inset-0 z-50 bg-slate-950/70 py-6 px-4 hidden flex items-center justify-center backdrop-blur-sm animate-fade-in">
+        <div class="bg-white text-slate-900 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl relative border border-slate-100">
+            <!-- Header matching blue brick color of logo -->
+            <div class="bg-brickBlue-600 text-white p-6 relative">
+                <button onclick="closeEnquiryModal()" class="absolute top-4 right-4 text-white/80 hover:text-white text-xl font-bold p-1"><i class="bi bi-x-circle-fill"></i></button>
+                <span class="text-[10px] bg-white/20 text-white font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max mb-2">Request Details</span>
+                <h4 class="text-xl font-extrabold tracking-tight" id="modalHeading">Query Premium Property</h4>
+                <p class="text-white/80 text-xs mt-1" id="modalSubtext">Enter verification credentials for immediate customized callback.</p>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <input type="hidden" id="modal-property-context" value="">
+                
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Full Legal Name</label>
+                    <div class="relative">
+                        <i class="bi bi-person-fill absolute left-3.5 top-[11px] text-slate-400"></i>
+                        <input type="text" id="modal-name" placeholder="E.g., Devendra Kumar" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Mobile Phone</label>
+                        <div class="relative">
+                            <i class="bi bi-telephone-fill absolute left-3.5 top-[11px] text-slate-400"></i>
+                            <input type="tel" id="modal-phone" placeholder="9876543210" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Email Address</label>
+                        <div class="relative">
+                            <i class="bi bi-envelope-fill absolute left-3.5 top-[11px] text-slate-400"></i>
+                            <input type="email" id="modal-email" placeholder="name@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="date-selection-slot" class="hidden">
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Ideal Site Visit Date</label>
+                    <div class="relative">
+                        <i class="bi bi-calendar3 absolute left-3.5 top-[11px] text-slate-400"></i>
+                        <input type="date" id="modal-visit-date" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Preferred Budget Target / Details</label>
+                    <textarea id="modal-comments" rows="3" placeholder="I would like to verify physical construction status and get pre-approved home loan details as soon as possible." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brickBlue-500 focus:bg-white transition-all"></textarea>
+                </div>
+
+                <!-- High converting guarantee trust badge -->
+                <div class="bg-brickBlue-50 p-3 rounded-xl border border-brickBlue-100/50 text-[11px] text-brickBlue-800 leading-tight flex items-center gap-2">
+                    <i class="bi bi-shield-lock-fill text-lg text-brickBlue-600"></i>
+                    <span><strong>100% Privacy Secure Guarantee:</strong> We never sell details to multiple random agents or telemarketing firms.</span>
+                </div>
+
+                <button onclick="submitEnquiryForm()" class="w-full bg-brickBlue-600 hover:bg-brickBlue-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brickBlue-600/20 active:scale-95 transition-all text-xs tracking-wider uppercase">
+                    Submit Request Verification <i class="bi bi-check-circle-fill"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN MATRIX COMPARE MODAL -->
+    <div id="compareDetailsModal" class="fixed inset-0 z-50 bg-slate-950/70 p-4 hidden flex items-center justify-center backdrop-blur-sm animate-fade-in">
+        <div class="bg-white text-slate-900 rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl relative border border-slate-100 flex flex-col max-h-[90vh]">
+            <div class="bg-brickBlue-950 text-white p-6 relative shrink-0">
+                <button onclick="closeCompareDetailsModal()" class="absolute top-4 right-4 text-white/80 hover:text-white text-xl font-bold p-1"><i class="bi bi-x-circle-fill"></i></button>
+                <h4 class="text-xl font-extrabold tracking-tight">Technical Spec Comparison</h4>
+                <p class="text-slate-300 text-xs mt-1">Cross comparison of verified assets, pricing patterns, metrics and structural benefits.</p>
+            </div>
+
+            <!-- Table content block scrollable -->
+            <div class="p-6 overflow-y-auto" id="comparison-table-content">
+                <!-- Programmatically generated table structure -->
+            </div>
+            
+            <div class="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between shrink-0">
+                <button onclick="clearComparisonTray()" class="text-xs font-bold text-red-500 hover:underline"><i class="bi bi-trash"></i> Reset Compare Tray</button>
+                <button onclick="closeCompareDetailsModal(); openEnquiryForm('Compare Analysis Assistance Request', 'Multiple Options')" class="bg-brickBlue-600 hover:bg-brickBlue-700 text-white text-xs font-extrabold py-2.5 px-6 rounded-xl">Consult Real Estate Spec Expert</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL DYNAMIC TOAST SYSTEM -->
+    <div id="toastSystem" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-800 transition-all duration-300 translate-y-32 opacity-0 max-w-sm">
+        <div class="bg-emerald-500 text-white p-2 rounded-xl text-sm" id="toastIcon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+        <div>
+            <p id="toastHeading" class="text-xs font-extrabold text-white">Action Completed</p>
+            <p id="toastMessage" class="text-[11px] text-slate-400 mt-0.5">Your parameters have been logged successfully.</p>
+        </div>
+    </div>
+
+    <!-- Dynamic System Script logic -->
+    <script>
+        // MOCK REAL ESTATE PROPERTIES DATABASE
+        const propertiesData = [
+            {
+                id: "bp-001",
+                title: "Prestige Lake Ridge Reserve",
+                type: "Apartments",
+                location: "Whitefield",
+                bhk: "3",
+                sizeSqft: "1850 SqFt",
+                price: 13500000, 
+                priceFormatted: "₹1.35 Cr",
+                possession: "Ready-to-Move",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80",
+                rating: "4.9",
+                developer: "Prestige Group",
+                reraId: "PRM/KA/RERA/1251/446/PR/171123/001254",
+                amenities: ["Swimming Pool", "High Security", "Clubhouse", "24/7 Power Backup"]
+            },
+            {
+                id: "bp-002",
+                title: "Assetz Marq premium Suites",
+                type: "Apartments",
+                location: "Whitefield",
+                bhk: "2",
+                sizeSqft: "1280 SqFt",
+                price: 9400000,
+                priceFormatted: "₹94 Lakhs",
+                possession: "Under Construction",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80",
+                rating: "4.8",
+                developer: "Assetz Property Group",
+                reraId: "PRM/KA/RERA/1251/310/PR/180222/002410",
+                amenities: ["Clubhouse", "Greenery", "Jogging Track", "Gymnasium"]
+            },
+            {
+                id: "bp-003",
+                title: "Sobha Royal Pavilion Villas",
+                type: "Luxury Villas",
+                location: "Sarjapur Road",
+                bhk: "4+",
+                sizeSqft: "3400 SqFt",
+                price: 36000000,
+                priceFormatted: "₹3.60 Cr",
+                possession: "Ready-to-Move",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80",
+                rating: "5.0",
+                developer: "Sobha Developers",
+                reraId: "PRM/KA/RERA/1251/446/PR/190825/003445",
+                amenities: ["Private Gardens", "Gated Security", "Luxury Clubhouse", "EV Charging Point"]
+            },
+            {
+                id: "bp-004",
+                title: "Godrej Woodland Serene Plots",
+                type: "Residential Plots",
+                location: "Sarjapur Road",
+                bhk: "All",
+                sizeSqft: "1200 - 2400 SqFt",
+                price: 5800000,
+                priceFormatted: "₹58 Lakhs",
+                possession: "New Launch",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=500&q=80",
+                rating: "4.7",
+                developer: "Godrej Properties",
+                reraId: "PRM/KA/RERA/1250/301/PR/201215/004512",
+                amenities: ["Basketball Court", "Security", "Parks", "Continuous Water Supply"]
+            },
+            {
+                id: "bp-005",
+                title: "Brigade Tech Boulevard Base",
+                type: "Commercial",
+                location: "Electronic City",
+                bhk: "All",
+                sizeSqft: "4500 SqFt Office",
+                price: 52000000,
+                priceFormatted: "₹5.20 Cr",
+                possession: "Ready-to-Move",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80",
+                rating: "4.9",
+                developer: "Brigade Realty",
+                reraId: "PRM/KA/RERA/1251/310/PR/181123/001994",
+                amenities: ["High Security", "Ample Parking", "Power Backup", "Conference Rooms"]
+            },
+            {
+                id: "bp-006",
+                title: "Arvind Bel Air Skyhomes",
+                type: "Apartments",
+                location: "Hebbal",
+                bhk: "3",
+                sizeSqft: "1680 SqFt",
+                price: 11200000,
+                priceFormatted: "₹1.12 Cr",
+                possession: "Under Construction",
+                image: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=500&q=80",
+                rating: "4.8",
+                developer: "Arvind SmartSpaces",
+                reraId: "PRM/KA/RERA/1251/309/PR/201015/003810",
+                amenities: ["Swimming Pool", "Connectivity", "High Security", "Roof Deck Lounge"]
+            },
+            {
+                id: "bp-007",
+                title: "Total Environment Windmills Studio",
+                type: "Luxury Villas",
+                location: "Whitefield",
+                bhk: "4+",
+                sizeSqft: "5150 SqFt",
+                price: 59000000,
+                priceFormatted: "₹5.90 Cr",
+                possession: "Ready-to-Move",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80",
+                rating: "5.0",
+                developer: "Total Environment Group",
+                reraId: "PRM/KA/RERA/1251/446/PR/171123/001100",
+                amenities: ["Private Pool", "Greenery", "Connectivity", "Smart Automation"]
+            },
+            {
+                id: "bp-008",
+                title: "Purva Emerald Bay Highs",
+                type: "Apartments",
+                location: "Electronic City",
+                bhk: "2",
+                sizeSqft: "1160 SqFt",
+                price: 7600000,
+                priceFormatted: "₹76 Lakhs",
+                possession: "New Launch",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80",
+                rating: "4.6",
+                developer: "Puravankara Developers",
+                reraId: "PRM/KA/RERA/1251/310/PR/210515/004652",
+                amenities: ["Clubhouse", "Connectivity", "Security", "Kids Zone"]
+            },
+            {
+                id: "bp-009",
+                title: "Shriram Grand City Signature",
+                type: "Apartments",
+                location: "Hebbal",
+                bhk: "1",
+                sizeSqft: "720 SqFt",
+                price: 4900000,
+                priceFormatted: "₹49 Lakhs",
+                possession: "Ready-to-Move",
+                image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=500&q=80",
+                rating: "4.7",
+                developer: "Shriram Properties",
+                reraId: "PRM/KA/RERA/1251/309/PR/191223/003112",
+                amenities: ["Connectivity", "Security", "Power Backup", "Parks"]
+            }
+        ];
+
+        // State Trackers
+        let compareList = [];
+        let activeFilters = {
+            location: "All",
+            type: "All",
+            bhk: "All",
+            budget: "All",
+            possession: "All"
+        };
+
+        // Bootstrap the Listings
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProperties(propertiesData);
+            calculateEMI();
+            initLiveProofTicker();
+        });
+
+        // Toggle mobile menu view
+        function toggleMobileMenu() {
+            const mm = document.getElementById("mobileMenu");
+            mm.classList.toggle("hidden");
+        }
+
+        // Render Properties dynamically to support real-time filter reactivity
+        function renderProperties(data) {
+            const grid = document.getElementById("realestate-grid animate-fade-in");
+            const countBadge = document.getElementById("properties-count-badge");
+            const emptyState = document.getElementById("grid-empty-state");
+
+            grid.innerHTML = "";
+
+            if (data.length === 0) {
+                emptyState.classList.remove("hidden");
+                grid.classList.add("hidden");
+                countBadge.innerText = `0 Units`;
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+            grid.classList.remove("hidden");
+            countBadge.innerText = `${data.length} Units Matching`;
+
+            data.forEach(property => {
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-brickBlue-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
+                
+                // Set Up Compare Button Status
+                const isCompared = compareList.some(item => item.id === property.id);
+                const compareBtnClass = isCompared 
+                    ? "bg-amberAccent-500 text-white" 
+                    : "bg-white/95 text-slate-800 border-slate-200 hover:bg-slate-50";
+
+                card.innerHTML = `
+                    <div class="relative h-56 sm:h-64">
+                        <img src="${property.image}" alt="${property.title}" class="w-full h-full object-cover">
+                        
+                        <!-- Header Status floating Badge -->
+                        <div class="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
+                            <span class="bg-brickBlue-600/90 backdrop-blur-sm text-white text-[10px] uppercase font-extrabold px-3 py-1 rounded-md tracking-wider shadow-sm">
+                                ${property.type}
+                            </span>
+                            <span class="bg-slate-900/90 backdrop-blur-sm text-white text-[9px] uppercase font-bold px-2 py-0.5 rounded-md tracking-wider shadow-sm">
+                                <i class="bi bi-clock-history"></i> ${property.possession}
+                            </span>
+                        </div>
+
+                        <!-- Real Rera verified tag styling from brick color scheme -->
+                        <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                            <span class="bg-emerald-500 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-md tracking-wider flex items-center gap-1 shadow-md">
+                                <i class="bi bi-check-circle-fill"></i> RERA COMPLIANT
+                            </span>
+                            <span class="bg-white/95 backdrop-blur-sm text-slate-800 text-[10px] font-extrabold px-2.5 py-1 rounded-md tracking-wider flex items-center gap-1 shadow-md">
+                                <i class="bi bi-star-fill text-amber Accent text-amber-500"></i> ${property.rating}
+                            </span>
+                        </div>
+
+                        <!-- Add to Compare Toggle Circle -->
+                        <button onclick="togglePropertyComparison('${property.id}')" class="absolute top-4 right-4 ${compareBtnClass} p-2 py-1.5 rounded-xl text-xs font-bold shadow-md transition-all flex items-center gap-1.5" title="Compare this Property">
+                            <i class="bi bi-arrow-left-right text-xs"></i> Compare
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2 text-xs font-bold text-slate-400">
+                                <span class="text-brickBlue-600"><i class="bi bi-geo-alt-fill"></i> ${property.location}</span>
+                                <span>•</span>
+                                <span>${property.sizeSqft}</span>
+                                ${property.bhk !== 'All' ? `<span>•</span><span>${property.bhk} BHK</span>` : ''}
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-950 mb-1 leading-tight hover:text-brickBlue-600 transition-colors cursor-pointer" onclick="openEnquiryForm('Query detailing of ${property.title}', '${property.title}')">
+                                ${property.title}
+                            </h4>
+                            <p class="text-xs text-slate-500 font-bold mb-4">${property.developer}</p>
+                            
+                            <!-- Key dynamic perks mapping -->
+                            <div class="flex flex-wrap gap-1.5 mb-6">
+                                ${property.amenities.map(amenity => `
+                                    <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md">${amenity}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Price Block -->
+                            <div class="bg-slate-50/80 p-3 rounded-2xl flex items-center justify-between mb-4 border border-slate-100">
+                                <div>
+                                    <span class="block text-[10px] text-slate-400 font-extrabold uppercase">Premium Price Quote</span>
+                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight">${property.priceFormatted}</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block text-[10px] text-slate-400 font-bold uppercase">Estimated EMI</span>
+                                    <span class="text-xs font-bold text-brickBlue-600">~₹${Math.round(property.price * 0.0086 / 1000) * 10}K /mo</span>
+                                </div>
+                            </div>
+
+                            <!-- Lead Action Widgets -->
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openSiteVisitModal('${property.title}')" class="bg-brickBlue-600 hover:bg-brickBlue-700 text-white font-bold text-xs py-3 px-3 rounded-xl flex items-center justify-center gap-1 shadow-md hover:scale-[1.02] active:scale-95 transition-all">
+                                    <i class="bi bi-calendar3"></i> Site Visit
+                                </button>
+                                <button onclick="openEnquiryForm('Quick brochure request on ${property.title}', '${property.title}')" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-bold text-xs py-3 px-3 rounded-xl flex items-center justify-center gap-1 hover:scale-[1.02] active:scale-95 transition-all">
+                                    <i class="bi bi-file-earmark-pdf-fill text-brickBlue-600"></i> Details
+                                </button>
+                            </div>
+
+                            <!-- Custom Quick WhatsApp Inquiry Integration -->
+                            <a href="https://wa.me/919876543210?text=Hi,%20I'm%20interested%20in%20obtaining%20information%20for%20${encodeURIComponent(property.title)}%20at%20${property.location}.%20Please%20share%20the%20brochure." target="_blank" class="w-full mt-2.5 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 flex items-center justify-center gap-1.5 py-1 text-center bg-emerald-50 hover:bg-emerald-100/50 rounded-xl transition duration-200">
+                                <i class="bi bi-whatsapp text-emerald-500"></i> Instant Brochure on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Dropdowns advanced search orchestration
+        function triggerSearch() {
+            const loc = document.getElementById("search-location").value;
+            const type = document.getElementById("search-type").value;
+            const bhk = document.getElementById("search-bhk").value;
+            const budget = document.getElementById("search-budget").value;
+            const pos = document.getElementById("search-possession").value;
+
+            activeFilters = { location: loc, type: type, bhk: bhk, budget: budget, possession: pos };
+            runSystemFilters();
+            
+            // Auto smooth scroll down to listings view
+            document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Quick action filters mapping
+        function quickFilter(typeVal) {
+            // Reset all filters first for clear action paths
+            resetActiveFilterModel();
+
+            if (typeVal === "Ready-to-Move") {
+                activeFilters.possession = "Ready-to-Move";
+            } else if (["Apartments", "Luxury Villas", "Residential Plots"].includes(typeVal)) {
+                activeFilters.type = typeVal;
+            } else if (["Whitefield", "Electronic City", "Hebbal"].includes(typeVal)) {
+                activeFilters.location = typeVal;
+            }
+
+            // Sync visual button state in quick filters bar
+            const buttons = document.querySelectorAll('.active-quick');
+            buttons.forEach(btn => btn.classList.remove('bg-white', 'text-brickBlue-600', 'border-brickBlue-500', 'font-bold'));
+            
+            runSystemFilters();
+            document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Inner filter process execution helper
+        function runSystemFilters() {
+            let processed = [...propertiesData];
+
+            // Filter Location
+            if (activeFilters.location !== "All") {
+                processed = processed.filter(p => p.location.toLowerCase() === activeFilters.location.toLowerCase());
+            }
+
+            // Filter Type
+            if (activeFilters.type !== "All") {
+                processed = processed.filter(p => p.type.toLowerCase() === activeFilters.type.toLowerCase());
+            }
+
+            // Filter BHK
+            if (activeFilters.bhk !== "All") {
+                processed = processed.filter(p => p.bhk.includes(activeFilters.bhk));
+            }
+
+            // Filter Possession
+            if (activeFilters.possession !== "All") {
+                processed = processed.filter(p => p.possession.toLowerCase() === activeFilters.possession.toLowerCase());
+            }
+
+            // Filter Budget
+            if (activeFilters.budget !== "All") {
+                let limit = 0;
+                if (activeFilters.budget === "60L") limit = 6000000;
+                else if (activeFilters.budget === "1.2Cr") limit = 12000000;
+                else if (activeFilters.budget === "2.5Cr") limit = 25000000;
+                else if (activeFilters.budget === "5Cr") limit = 50000000;
+
+                processed = processed.filter(p => p.price <= limit);
+            }
+
+            renderProperties(processed);
+        }
+
+        // Reset All system filters
+        function resetFilters() {
+            resetActiveFilterModel();
+            
+            // Reset search DOM inputs
+            document.getElementById("search-location").value = "All";
+            document.getElementById("search-type").value = "All";
+            document.getElementById("search-bhk").value = "All";
+            document.getElementById("search-budget").value = "All";
+            document.getElementById("search-possession").value = "All";
+
+            runSystemFilters();
+        }
+
+        function resetActiveFilterModel() {
+            activeFilters = { location: "All", type: "All", bhk: "All", budget: "All", possession: "All" };
+        }
+
+        // PROPERTY COMPARISON ENGINE
+        function togglePropertyComparison(id) {
+            const target = propertiesData.find(p => p.id === id);
+            const index = compareList.findIndex(p => p.id === id);
+
+            if (index > -1) {
+                // Remove
+                compareList.splice(index, 1);
+                showToast("Removed from Compare", `Property has been extracted.`);
+            } else {
+                // Add
+                if (compareList.length >= 3) {
+                    showToast("Comparison Space Full", "You can compare up to 3 properties maximum concurrently.", "bg-amber-500");
+                    return;
+                }
+                compareList.push(target);
+                showToast("Added to Compare", `${target.title} is staged in compare list.`);
+            }
+
+            updateCompareTrayUI();
+            runSystemFilters(); // Refresh compares button styling
+        }
+
+        // Sync layout display tray with current comparables
+        function updateCompareTrayUI() {
+            const tray = document.getElementById("comparison-tray");
+            const actionBlock = document.getElementById("compare-actions");
+            const badge = document.getElementById("compare-badge");
+
+            // Sync compare badge
+            if (compareList.length > 0) {
+                badge.innerText = compareList.length;
+                badge.classList.remove("hidden");
+                actionBlock.classList.remove("hidden");
+            } else {
+                badge.classList.add("hidden");
+                actionBlock.classList.add("hidden");
+            }
+
+            tray.innerHTML = "";
+
+            // Always render 3 comparison panels/cards
+            for (let i = 0; i < 3; i++) {
+                const item = compareList[i];
+                if (item) {
+                    const box = document.createElement("div");
+                    box.className = "bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm relative";
+                    box.innerHTML = `
+                        <button onclick="togglePropertyComparison('${item.id}')" class="absolute top-2 right-2 text-slate-400 hover:text-red-500 p-1"><i class="bi bi-trash"></i></button>
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.title}" class="h-12 w-16 object-cover rounded-lg">
+                            <div>
+                                <span class="bg-brickBlue-100 text-brickBlue-800 text-[9px] font-bold px-2 py-0.5 rounded uppercase">${item.type}</span>
+                                <h5 class="text-xs font-extrabold text-slate-800 mt-1 line-clamp-1">${item.title}</h5>
+                                <p class="text-[10px] font-bold text-brickBlue-600">${item.location} • ${item.priceFormatted}</p>
+                            </div>
+                        </div>
+                    `;
+                    tray.appendChild(box);
+                } else {
+                    const fallback = document.createElement("div");
+                    fallback.className = "bg-slate-100/60 border border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center py-6 px-4 text-center min-h-[76px]";
+                    fallback.innerHTML = `
+                        <span class="text-xs font-semibold text-slate-400 text-center"><i class="bi bi-plus"></i> Select match above</span>
+                    `;
+                    tray.appendChild(fallback);
+                }
+            }
+        }
+
+        // Launch side-by-side matrices table modal
+        function processVisualComparison() {
+            if (compareList.length === 0) return;
+
+            const modal = document.getElementById("compareDetailsModal");
+            const content = document.getElementById("comparison-table-content");
+
+            let tableHTML = `
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200">
+                            <th class="p-4 font-bold text-slate-500 uppercase">Features Specs Matrix</th>
+                            ${compareList.map(item => `<th class="p-4 font-extrabold text-brickBlue-950">${item.title}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">Developer Builder</td>
+                            ${compareList.map(item => `<td class="p-4 font-semibold text-slate-700">${item.developer}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">Price Quote Point</td>
+                            ${compareList.map(item => `<td class="p-4 font-extrabold text-slate-900 text-sm">${item.priceFormatted}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">Property Layout Type</td>
+                            ${compareList.map(item => `<td class="p-4 font-semibold text-slate-700">${item.type}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">BHK configuration</td>
+                            ${compareList.map(item => `<td class="p-4 font-semibold text-slate-700">${item.bhk} BHK</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">Size Area Metrics</td>
+                            ${compareList.map(item => `<td class="p-4 font-semibold text-slate-700">${item.sizeSqft}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">RERA License Number</td>
+                            ${compareList.map(item => `<td class="p-4 text-emerald-600 font-bold font-mono text-[10px] break-all max-w-[150px]">${item.reraId}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-slate-500">Core Lux Amenities</td>
+                            ${compareList.map(item => `<td class="p-4 font-semibold text-slate-700">${item.amenities.join(', ')}</td>`).join('')}
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+
+            content.innerHTML = tableHTML;
+            modal.classList.remove("hidden");
+        }
+
+        function closeCompareDetailsModal() {
+            const modal = document.getElementById("compareDetailsModal");
+            modal.classList.add("hidden");
+        }
+
+        function clearComparisonTray() {
+            compareList = [];
+            updateCompareTrayUI();
+            runSystemFilters();
+            closeCompareDetailsModal();
+            showToast("Comparison Cleared", "Staged properties have been cleared successfully.");
+        }
+
+        // LIVE EMI CALCULATOR COMPUTATION LOGIC
+        function calculateEMI() {
+            const principal = parseFloat(document.getElementById("loanRange").value);
+            const interestInput = parseFloat(document.getElementById("rateRange").value);
+            const years = parseInt(document.getElementById("termRange").value);
+
+            // Sync visual labels
+            document.getElementById("loan-amt-label").innerText = principal >= 10000000 
+                ? `₹${(principal / 10000000).toFixed(2)} Cr` 
+                : `₹${(principal / 100000).toFixed(0)} Lakhs`;
+            
+            document.getElementById("loan-rate-label").innerText = `${interestInput.toFixed(2)}%`;
+            document.getElementById("loan-term-label").innerText = `${years} Years`;
+
+            // Standard formulas for EMI calculation
+            const monthlyRate = (interestInput / 100) / 12;
+            const months = years * 12;
+
+            let emi = 0;
+            if (monthlyRate === 0) {
+                emi = principal / months;
+            } else {
+                emi = principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            }
+
+            const totalPayable = emi * months;
+            const totalInterestPayable = totalPayable - principal;
+
+            // Update UI elements values
+            document.getElementById("calculated-emi").innerText = `₹${Math.round(emi).toLocaleString('en-IN')}`;
+            document.getElementById("emi-out-principal").innerText = `₹${principal.toLocaleString('en-IN')}`;
+            document.getElementById("emi-out-interest").innerText = `₹${Math.round(totalInterestPayable).toLocaleString('en-IN')}`;
+            document.getElementById("emi-out-total").innerText = `₹${Math.round(totalPayable).toLocaleString('en-IN')}`;
+        }
+
+        // INTELLIGENT AI RECOMMENDATIONS ENGINE MOCK CODE
+        function generateAIMatches() {
+            const goalVal = document.getElementById("ai-goal").value;
+            const amenityVal = document.getElementById("ai-amenity").value;
+            const timelineVal = document.getElementById("ai-timeline").value;
+
+            // Mapping pseudo algorithm matching properties
+            let matchingCriteria = [...propertiesData];
+
+            // Prioritize higher rated assets for top matching profiles
+            matchingCriteria.sort((a, b) => b.rating - a.rating);
+
+            // Fetch top 2
+            const topTwo = matchingCriteria.slice(0, 2);
+
+            const container = document.getElementById("aiMatchOutputs");
+            const grid = document.getElementById("ai-properties-grid");
+
+            grid.innerHTML = "";
+
+            topTwo.forEach(prop => {
+                const miniCard = document.createElement("div");
+                miniCard.className = "bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex items-center justify-between text-white hover:bg-white/15 transition-all duration-250";
+                miniCard.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <img src="${prop.image}" alt="${prop.title}" class="h-14 w-20 object-cover rounded-xl shadow-md">
+                        <div>
+                            <span class="bg-amber-500 text-slate-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wider">98% AI Match fit</span>
+                            <h5 class="text-xs font-extrabold text-white mt-1 leading-tight">${prop.title}</h5>
+                            <p class="text-[10px] text-slate-300 font-bold">${prop.developer} • ${prop.location}</p>
+                        </div>
+                    </div>
+                    <button onclick="openEnquiryForm('AI Premium Fit Enquiry: ${prop.title}', '${prop.title}')" class="bg-brickBlue-500 hover:bg-brickBlue-400 text-white font-extrabold text-[10px] px-3.5 py-2 rounded-lg transition duration-200">
+                        Get Pricing
+                    </button>
+                `;
+                grid.appendChild(miniCard);
+            });
+
+            container.classList.remove("hidden");
+            // Scroll matching slot into context securely
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            showToast("AI Profiles Computed", "Optimized standard options derived matching requirements.");
+        }
+
+        // LEAD INTEGRATIONS POPUPS & CALLBACK ACTIONS
+        function openEnquiryForm(reasonHeading, contextTag) {
+            const modal = document.getElementById("enquiryModal");
+            const heading = document.getElementById("modalHeading");
+            const subtext = document.getElementById("modalSubtext");
+            const contextInput = document.getElementById("modal-property-context");
+            const dateSlot = document.getElementById("date-selection-slot");
+
+            heading.innerText = reasonHeading;
+            subtext.innerText = `Get exclusive verified paperwork specifications for ${contextTag}.`;
+            contextInput.value = contextTag;
+            dateSlot.classList.add("hidden"); // Normal enquiry does not need calendar
+
+            modal.classList.remove("hidden");
+        }
+
+        function openSiteVisitModal(propertyTitle) {
+            const modal = document.getElementById("enquiryModal");
+            const heading = document.getElementById("modalHeading");
+            const subtext = document.getElementById("modalSubtext");
+            const contextInput = document.getElementById("modal-property-context");
+            const dateSlot = document.getElementById("date-selection-slot");
+
+            heading.innerText = "Schedule Free Real Site Visit";
+            subtext.innerText = `Book luxury shuttle transit and physical verified inspections for ${propertyTitle}.`;
+            contextInput.value = `Site Visit: ${propertyTitle}`;
+            dateSlot.classList.remove("hidden"); // Require date parameter
+
+            modal.classList.remove("hidden");
+        }
+
+        function closeEnquiryModal() {
+            const modal = document.getElementById("enquiryModal");
+            modal.classList.add("hidden");
+        }
+
+        function submitEnquiryForm() {
+            const name = document.getElementById("modal-name").value;
+            const phone = document.getElementById("modal-phone").value;
+            const email = document.getElementById("modal-email").value;
+            const contextVal = document.getElementById("modal-property-context").value;
+
+            if (!name || !phone || !email) {
+                showToast("Form Verification Failed", "Please populate name, valid phone and structured email parameter.", "bg-red-500");
+                return;
+            }
+
+            closeEnquiryModal();
+            showToast("Enquiry Transmitted", `Thank you ${name}. Our certified manager is connecting regarding ${contextVal}.`);
+
+            // Clear input fields
+            document.getElementById("modal-name").value = "";
+            document.getElementById("modal-phone").value = "";
+            document.getElementById("modal-email").value = "";
+            document.getElementById("modal-comments").value = "";
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById("newsletter-email").value;
+            if (!email) {
+                showToast("Subscribing Error", "Please provide key email address first.", "bg-red-500");
+                return;
+            }
+            document.getElementById("newsletter-email").value = "";
+            showToast("Subscription Activated", "Weekly Bengaluru Real Estate pricing catalogs mapped to inbox!");
+        }
+
+        // FOCUS ON GEOGRAPHIC REGIONS FROM QUICK CLICKS
+        function focusGeoZone(zone) {
+            quickFilter(zone);
+            showToast(`Location Focus: ${zone}`, `Displaying active listings inside ${zone}.`);
+        }
+
+        // NOTIFICATION TOAST SYSTEM
+        function showToast(title, message, bgTheme = "bg-emerald-500") {
+            const toast = document.getElementById("toastSystem");
+            const heading = document.getElementById("toastHeading");
+            const msg = document.getElementById("toastMessage");
+            const iconBox = document.getElementById("toastIcon");
+
+            heading.innerText = title;
+            msg.innerText = message;
+            
+            // Dynamic theme replacement
+            iconBox.className = `${bgTheme} text-white p-2.5 rounded-xl text-sm`;
+
+            toast.classList.remove("translate-y-32", "opacity-0");
+            toast.style.pointerEvents = "auto";
+
+            setTimeout(() => {
+                toast.classList.add("translate-y-32", "opacity-0");
+                toast.style.pointerEvents = "none";
+            }, 4500);
+        }
+
+        function dismissLiveProof() {
+            const widget = document.getElementById("liveProofWidget");
+            widget.classList.add("translate-y-32", "opacity-0");
+        }
+
+        // SOCIAL PROOF SHIFTING LOOP SIMULATOR (Dynamic live notifications)
+        function initLiveProofTicker() {
+            const mockEvents = [
+                "Shrikant Sharma dynamically generated matching AI metrics for Plots!",
+                "Radhika Govind just booked a Luxury Villa site inspection in Sarjapur Road.",
+                "Aman from Indiranagar requested detailed brochures on Arvind Skyhomes.",
+                "Saraswati Nair validated developer credentials for Prestige Lake Ridge.",
+                "A verified investor secured early launch discounts on Assetz Marq!"
+            ];
+
+            const widget = document.getElementById("liveProofWidget");
+            const labelTxt = document.getElementById("liveProofText");
+
+            setInterval(() => {
+                const randomMsg = mockEvents[Math.floor(Math.random() * mockEvents.length)];
+                labelTxt.innerText = randomMsg;
+                
+                // Show notification transition
+                widget.classList.remove("translate-y-32", "opacity-0");
+                
+                // Dim after 6 seconds
+                setTimeout(() => {
+                    widget.classList.add("translate-y-32", "opacity-0");
+                }, 6000);
+
+            }, 18000); // Repeat actions every 18 seconds smoothly
+        }
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
